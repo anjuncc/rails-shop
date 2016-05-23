@@ -1,6 +1,22 @@
 Rails.application.routes.draw do
-  resources :products
-  resources :products
+  get 'home/index'
+
+  get 'home/welcome'
+
+  get 'home/about'
+
+  get 'home/contact'
+
+  resources :variants
+
+  resources :products do
+    collection do
+      get :top # 排行榜功能
+    end
+    member do
+      post :buy # 添加到购物车
+    end
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -56,3 +72,4 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
 end
+gem 'devise'
